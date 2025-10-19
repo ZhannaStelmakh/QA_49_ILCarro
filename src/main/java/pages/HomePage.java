@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,13 +14,10 @@ public class HomePage extends BasePage{
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, 10), this);
     }
 
-    @FindBy(css = "a[href='/login']")
+    @FindBy(xpath = "//a[text()='Log in']")
     WebElement btnLoginHeader;
 
-    //WebElement getBtnLoginHeader = driver.findElement(By.cssSelector("a[href='/login']"));
+    //WebElement getBtnLoginHeader = driver.findElement(By.xpath("//a[text()='Log in']"));
 
-    public void clickBtnLoginHeder(){
-        btnLoginHeader.click();
-    }
-
+    public void clickBtnLoginHeader(){btnLoginHeader.click();}
 }

@@ -21,7 +21,7 @@ public class ApplicationManager {
         //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
-    @AfterMethod(enabled = false)
+    @AfterMethod(enabled = true)       // false
     public void tearDown(){
         if (driver != null)
             driver.quit();
