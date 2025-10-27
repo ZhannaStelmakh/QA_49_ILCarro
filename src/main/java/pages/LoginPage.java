@@ -10,27 +10,37 @@ import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 public class LoginPage extends BasePage{
     public LoginPage(WebDriver driver){
         setDriver(driver);
-        PageFactory.initElements(new AjaxElementLocatorFactory(driver, 10), this);
+        PageFactory.initElements(
+                new AjaxElementLocatorFactory(driver, 10), this);
     }
-    @FindBy(css = "input[type='email']")
+
+
+    @FindBy(id = "email")
     WebElement inputEmail;
 
-    @FindBy(css = "input[id='password']")
+    @FindBy(id = "password")
     WebElement inputPassword;
 
-    @FindBy(css = "button[type='submit']")
-    WebElement btnLoginForm;
+    @FindBy(xpath = "//button[@type='submit']")
+    WebElement btnYalla;
 
-    public void  typeLoginForm (String email, String password){
-        inputEmail.sendKeys(email);
-        inputPassword.sendKeys(password);
-        btnLoginForm.click();
-    }
-    public void  typeLoginFormWithUser (User user){
+    @FindBy(xpath = "//h2[text()='Logged in success']")
+    WebElement popUpTextLoggedSuccess;
+
+    @FindBy(xpath = "//h2[contains(text(),'Login or Password incorrect')]")
+    WebElement popUpTextLoggedIncorrect;
+
+
+    public void  typeLoginForm (User user){
         inputEmail.sendKeys(user.getUsername());
         inputPassword.sendKeys(user.getPassword());
-        btnLoginForm.click();
+        btnYalla.click();
+    }
+    public boolean isLoggedDisplayed(){
+        return elementIsDisplayed(popUpTextLoggedSuccess);
     }
 
-
+    public boolean isLoggedIncorrect(){
+        return elementIsDisplayed(popUpTextLoggedIncorrect);
+    }
 }

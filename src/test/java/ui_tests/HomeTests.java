@@ -7,9 +7,8 @@ import pages.HomePage;
 public class HomeTests extends ApplicationManager {
 
     @Test
-    public void firstTest(){
-        System.out.println("first test");
+    public void startTest (){
         HomePage homePage = new HomePage(getDriver());
     }
-    // setup (BeforMethod) --> firstTest (Test) -->tearDown (AfterMethod)
+    // setup (BeforeMethod) --> firstTest (Test) -->tearDown (AfterMethod)
 }

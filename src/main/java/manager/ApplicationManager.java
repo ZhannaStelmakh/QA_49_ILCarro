@@ -8,8 +8,10 @@ import org.testng.annotations.BeforeMethod;
 import java.time.Duration;
 
 public class ApplicationManager {
+
     private WebDriver driver;
     public WebDriver getDriver(){
+
         return driver;
     }
 
@@ -21,9 +23,13 @@ public class ApplicationManager {
         //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
-    @AfterMethod(enabled = true)       // false
+    @AfterMethod(enabled = false)       // false
     public void tearDown(){
         if (driver != null)
             driver.quit();
     }
+
+//    public WebDriver getDriver(){
+//        return driver;
+//    }
 }

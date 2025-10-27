@@ -14,10 +14,17 @@ public class HomePage extends BasePage{
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, 10), this);
     }
 
-    @FindBy(xpath = "//a[text()='Log in']")
+
+    @FindBy(xpath = "//a[text()=' Log in ']")
     WebElement btnLoginHeader;
+    @FindBy(xpath = "//a[text()=' Sign up ']")
+    WebElement btnSignUpHeader;
 
     //WebElement getBtnLoginHeader = driver.findElement(By.xpath("//a[text()='Log in']"));
 
-    public void clickBtnLoginHeader(){btnLoginHeader.click();}
+    public void clickBtnLoginHeader(){
+        btnLoginHeader.click();}
+
+    public void clickBtnSignUpHeader(){
+        btnSignUpHeader.click();}
 }
