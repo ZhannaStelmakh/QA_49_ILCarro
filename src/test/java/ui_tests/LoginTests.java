@@ -9,10 +9,10 @@ import pages.LoginPage;
 
 public class LoginTests extends ApplicationManager {
     @Test
-    public void LoginPositiveTest() {
+    public void loginPositiveTest() {
         User user = User.builder()
-                .username("bilbo_baggins_12345@mail.com")
-                .password("password123!")
+                .username("cherry@gmail.com")
+                .password("Ch12345$")
                 .build();
         new HomePage(getDriver()).clickBtnLoginHeader();
         LoginPage loginPage = new LoginPage(getDriver());
@@ -24,13 +24,37 @@ public class LoginTests extends ApplicationManager {
     @Test
     public void loginNegativeTest_wrongPassword(){
         User user = User.builder()
-                .username("bilbo_baggins_12345@mail.com")
+                .username("cherry@gmail.com")
                 .password("wrong password")
                 .build();
         new HomePage(getDriver()).clickBtnLoginHeader();
         LoginPage loginPage = new LoginPage(getDriver());
         loginPage.typeLoginForm(user);
         Assert.assertTrue(loginPage.isLoggedIncorrect());
+    }
+
+    @Test
+    public void loginNegativeTest_emptyPassword(){
+        User user = User.builder()
+                .username("cherry@gmail.com")
+                .password("")
+                .build();
+        new HomePage(getDriver()).clickBtnLoginHeader();
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.typeLoginForm(user);
+        Assert.assertTrue(loginPage.isTextInErrorPresent("Password is required"));
+    }
+
+    @Test
+    public void loginNegativeTest_emailWOAt(){
+        User user = User.builder()
+                .username("cherrygmail.com")
+                .password("Ch12345$")
+                .build();
+        new HomePage(getDriver()).clickBtnLoginHeader();
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.typeLoginForm(user);
+        Assert.assertTrue(loginPage.isTextInErrorPresent("It'snot look like email"));
     }
 //    @Test
 //    public void LoginNegativeTest_WrongPassword(){
