@@ -61,4 +61,5 @@ public class SignUpPage extends BasePage {
     public boolean isTextDialogContainerPresent(){
         return elementIsDisplayed(textDialogContainer);
     }
+
 }
