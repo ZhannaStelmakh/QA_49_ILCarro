@@ -9,6 +9,7 @@ import java.time.LocalDate;
 
 public class SearchCarTests extends ApplicationManager {
 
+
     HomePage homePage;
     @BeforeMethod
     public void openHomePage(){
@@ -18,6 +19,14 @@ public class SearchCarTests extends ApplicationManager {
     @Test
     public void searchPositiveTest(){
         String city = "Haifa";
+        LocalDate dateFrom = LocalDate.of(2025, 12, 1);
+        LocalDate dateTo = LocalDate.of(2025, 12, 22);
+        homePage.typeSearchForm(city, dateFrom, dateTo);
+    }
+
+    @Test
+    public void searchNegativeTest(){
+        String city = "";
         LocalDate dateFrom = LocalDate.of(2025, 12, 1);
         LocalDate dateTo = LocalDate.of(2025, 12, 22);
         homePage.typeSearchForm(city, dateFrom, dateTo);

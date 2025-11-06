@@ -54,8 +54,10 @@ public class HomePage extends BasePage{
                 +dateTo.getDayOfMonth()+"/"
                 +dateTo.getYear();
         inputDates.sendKeys(dates);
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+        JavascriptExecutor  js = (JavascriptExecutor) driver;
         js.executeScript("document.querySelector(\"button[type='submit']\").removeAttribute(\"disabled\")");
+//        JavascriptExecutor js = (JavascriptExecutor) driver;
+//        js.executeScript("document.querySelector(\"button[type='submit']\").removeAttribute(\"disabled\")");
         btnYalla.click();
     }
 }
