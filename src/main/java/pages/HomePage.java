@@ -46,18 +46,32 @@ public class HomePage extends BasePage{
 
     public void typeSearchForm(String city, LocalDate dateFrom, LocalDate dateTo) {
         inputCity.sendKeys(city);
-        System.out.println(dateFrom.toString());
+        //System.out.println(dateFrom.toString());
         String dates = dateFrom.getMonthValue()+"/"
                 +dateFrom.getDayOfMonth()+"/"
-                +dateFrom.getYear()+ " _ "
+                +dateFrom.getYear()+ " - "
                 +dateTo.getMonthValue()+"/"
                 +dateTo.getDayOfMonth()+"/"
                 +dateTo.getYear();
         inputDates.sendKeys(dates);
-        JavascriptExecutor  js = (JavascriptExecutor) driver;
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("document.querySelector(\"button[type='submit']\").removeAttribute(\"disabled\")");
-//        JavascriptExecutor js = (JavascriptExecutor) driver;
-//        js.executeScript("document.querySelector(\"button[type='submit']\").removeAttribute(\"disabled\")");
+        //pause(5);
+        //btnYalla.click();
+        clickWait(btnYalla, 3);
+    }
+
+    public void typeSearchFormWOJS(String city, LocalDate dateFrom, LocalDate dateTo) {
+        inputCity.sendKeys(city);
+        //System.out.println(dateFrom.toString());
+        String dates = dateFrom.getMonthValue()+"/"
+                +dateFrom.getDayOfMonth()+"/"
+                +dateFrom.getYear()+ " - "
+                +dateTo.getMonthValue()+"/"
+                +dateTo.getDayOfMonth()+"/"
+                +dateTo.getYear();
+        inputDates.sendKeys(dates);
+        //clickWait(btnYalla, 3);
         btnYalla.click();
     }
 }
