@@ -74,4 +74,36 @@ public class HomePage extends BasePage{
         //clickWait(btnYalla, 3);
         btnYalla.click();
     }
+
+    @FindBy(xpath = "//button[@aria-label='Choose month and year']")
+    WebElement calendarBtnYear;
+
+    private void typeCalendar(LocalDate date){
+        calendarBtnYear.click();
+        String year = Integer.toString(date.getYear());  //2025   2026
+        WebElement btnYear = driver.findElement(
+                By.xpath("//td[@aria-label='"+year+"']"));
+        //  "//td[@aria-label='"+year+"']" --> "//td[@aria-label='"   "2026"   "']" -->  //td[@aria-label='2026']
+        btnYear.click();
+
+        //   //td[@aria-label="December 2025"]
+        String month = date.getMonth().toString();
+        System.out.println(month);  // DECEMBER  -- > December
+        month = month.toLowerCase();
+        String first = month.substring(0, 1).toUpperCase();
+        month = month.replace(month.substring(0, 1), first);
+        System.out.println(month);
+        WebElement btnMonth = driver.findElement(
+                By.xpath("//td[@aria-label='"+month+" "+year+"']"));
+        btnMonth.click();
+    }
+
+    public void typeSearchFormCalendar(String city, LocalDate dateFrom, LocalDate dateTo) {
+        inputCity.sendKeys(city);
+        inputDates.click();
+        pause(5);
+        typeCalendar(dateFrom);
+    }
 }
+
+

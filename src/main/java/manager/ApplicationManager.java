@@ -30,7 +30,7 @@ public class ApplicationManager {
         //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
-    @AfterMethod(enabled = true)       // false
+    @AfterMethod(enabled = false)       // false
     public void tearDown(){
         logger.info("Stop testing" + LocalDate.now() +" : " +LocalTime.now());
         if (driver != null)

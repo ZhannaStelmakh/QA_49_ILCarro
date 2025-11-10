@@ -70,6 +70,16 @@ public class SearchCarTests extends ApplicationManager {
         Assert.assertTrue(homePage.isTextInErrorPresent("Second date must be after first date"));
     }
 
+    //===============================================================
+    @Test
+    public void searchPositiveTestCalendar(){
+        String city = "Haifa";
+        LocalDate dateFrom = LocalDate.of(2025, 12, 1);
+        LocalDate dateTo = LocalDate.of(2025, 12, 22);
+        homePage.typeSearchFormCalendar(city, dateFrom, dateTo);
+        //Assert.assertTrue(homePage.urlContains("results", 5));
+    }
+
 //    @Test
 //    public void searchNegativeTestWOCity(){
 //        String city = "Haifa";
