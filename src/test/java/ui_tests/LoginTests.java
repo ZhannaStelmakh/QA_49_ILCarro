@@ -3,13 +3,16 @@ package ui_tests;
 import dto.User;
 import manager.ApplicationManager;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
 import utils.RetryAnalyzer;
+import utils.TestNGListener;
 
 import java.lang.reflect.Method;
 
+@Listeners(TestNGListener.class)
 public class LoginTests extends ApplicationManager {
 
     @Test(retryAnalyzer = RetryAnalyzer.class)
@@ -22,10 +25,9 @@ public class LoginTests extends ApplicationManager {
         new HomePage(getDriver()).clickBtnLoginHeader();
         LoginPage loginPage = new LoginPage(getDriver());
         loginPage.typeLoginForm(user);
-        logger.error("Example error");
+        //logger.error("Example error");
         Assert.assertTrue(loginPage.isLoggedDisplayed());
     }
-
 
     @Test
     public void loginNegativeTest_wrongPassword(){
