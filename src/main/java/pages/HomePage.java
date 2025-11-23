@@ -7,7 +7,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.enums.FooterMenuItem;
 
+import java.time.Duration;
 import java.time.LocalDate;
 
 import static java.lang.Integer.valueOf;
@@ -121,6 +125,11 @@ public class HomePage extends BasePage{
         js.executeScript("document.querySelector(" +
                 "\"button[type='submit']\").removeAttribute(\"disabled\")");
         btnYalla.click();
+    }
+    public boolean clickFooterItem(FooterMenuItem item, String title){
+        driver.findElement(By.cssSelector(item.getLocator())).click();
+        return new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.titleContains(title));
     }
 }
 
