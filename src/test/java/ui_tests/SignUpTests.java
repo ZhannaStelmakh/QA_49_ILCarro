@@ -19,13 +19,13 @@ public class SignUpTests extends ApplicationManager {
 
     SignUpPage signUpPage;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void gotoSignUpPage(){
        new HomePage(getDriver()).clickBtnSignUpHeader();
        signUpPage = new SignUpPage(getDriver());
     }
 
-    @Test
+    @Test(groups = "smoke")
     public void registrationPositiveTest(){
         User user = positiveUser();
         signUpPage.typeLoginForm(user);

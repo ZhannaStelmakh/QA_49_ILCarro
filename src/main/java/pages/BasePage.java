@@ -44,7 +44,7 @@ public abstract class BasePage {
     }
 
     public <T extends BasePage>  T clickButtonHeader(HeaderMenuItem item) {
-        WebElement button = new WebDriverWait(driver, Duration.ofSeconds(10))
+        WebElement button = new WebDriverWait(driver, Duration.ofSeconds(20))
                 .until(ExpectedConditions
                         .elementToBeClickable(By.xpath(item.getLocator())));
         button.click();
